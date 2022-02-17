@@ -8,6 +8,7 @@ import com.joseph.composeplayground.util.LoadState
 data class HomeState(
     val loadState: LoadState,
     val upComingMovieList: UpComingMovieState,
+    val popularMovieList: PoPularMovieState,
     val movieSearch: String,
 ) : UiState {
 
@@ -16,6 +17,7 @@ data class HomeState(
             return HomeState(
                 loadState = LoadState.Idle,
                 upComingMovieList = UpComingMovieState.getInitial(),
+                popularMovieList = PoPularMovieState.getInitial(),
                 movieSearch = ""
             )
         }
@@ -28,6 +30,20 @@ data class HomeState(
         companion object {
             fun getInitial(): UpComingMovieState {
                 return UpComingMovieState(
+                    movies = emptyList(),
+                    page = 1
+                )
+            }
+        }
+    }
+
+    data class PoPularMovieState(
+        val movies: List<Movie>,
+        val page: Int
+    ) {
+        companion object {
+            fun getInitial(): PoPularMovieState {
+                return PoPularMovieState(
                     movies = emptyList(),
                     page = 1
                 )

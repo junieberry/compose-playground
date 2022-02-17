@@ -5,5 +5,6 @@ import com.joseph.composeplayground.model.Movie
 
 
 sealed class HomeAction : UiAction {
-    class FetchUpComingMovieList(val fetchedList: List<Movie>): HomeAction()
+    class FetchUpComingMovieList(val fetchedList: List<Movie>) : HomeAction()
+    class FetchPopularMovieList(val fetchedList: List<Movie>) : HomeAction()
 }
